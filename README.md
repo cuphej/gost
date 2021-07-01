@@ -46,6 +46,25 @@ Google讨论组: <https://groups.google.com/d/forum/go-gost>
 
 <https://github.com/ginuerzh/gost/releases>
 
+wget "https://github.com/ginuerzh/gost/releases/download/v2.8.1/gost_2.8.1_linux_amd64.tar.gz"
+
+tar -zxvf gost_2.8.1_linux_amd64.tar.gz
+
+mv gost_2.8.1_linux_amd64/gost /usr/bin/gost
+
+chmod +x /usr/bin/gost
+
+
+## 无需认证（修改端口号即可）
+gost -L socks5://:1080
+
+## 开启认证（其中的 “账号” “密码” “端口” 自行修改）
+gost -L 账号:密码@:端口 socks5://:端口
+
+## 测试没问题后可以用`nohup`命令挂载到后台运行，重启失效，再次挂载即可重新使用；
+nohup gost -L 账号:密码@:端口 socks5://:端口 > /dev/null 2>&1 &
+
+
 #### 源码编译
 
 ```bash
